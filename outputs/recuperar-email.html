@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ServeSync — Recuperar senha</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="topbar__title">Login</span>
+  </header>
+
+  <main class="app app--solo">
+    <section class="panel">
+      <div class="panel__form">
+        <header class="panel__header">
+          <h1>Altere sua senha</h1>
+          <p>Insira seu e-mail para verificação</p>
+        </header>
+
+        <form class="form" action="recuperar-codigo.html" method="get" novalidate>
+          <div class="field">
+            <label for="recover-email">E-mail</label>
+            <span class="field__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M2 6l10 7 10-7"/>
+              </svg>
+            </span>
+            <input type="email" id="recover-email" name="email" placeholder="E-mail" required>
+          </div>
+
+          <button type="submit" class="btn btn--primary">Enviar código</button>
+
+          <a href="login.html" class="link link--back">← Voltar para o login</a>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

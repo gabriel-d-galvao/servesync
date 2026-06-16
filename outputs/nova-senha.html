@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ServeSync — Nova senha</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="topbar__title">Login</span>
+  </header>
+
+  <main class="app app--solo">
+    <section class="panel">
+      <div class="panel__form">
+        <header class="panel__header">
+          <h1>Nova senha</h1>
+          <p>Crie a sua nova senha</p>
+        </header>
+
+        <form class="form" id="form-newpass" action="sucesso.html" method="get" novalidate>
+          <div class="field">
+            <label for="new-senha">Nova senha</label>
+            <span class="field__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="11" width="16" height="9" rx="2"/>
+                <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+              </svg>
+            </span>
+            <input type="password" id="new-senha" name="senha" placeholder="Nova senha" required minlength="8">
+          </div>
+
+          <div class="field">
+            <label for="confirm-senha">Confirme sua nova senha</label>
+            <span class="field__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="11" width="16" height="9" rx="2"/>
+                <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+              </svg>
+            </span>
+            <input type="password" id="confirm-senha" name="confirmar" placeholder="Confirme sua nova senha" required minlength="8">
+          </div>
+
+          <p class="form__error" id="newpass-error" role="alert" hidden>As senhas não coincidem.</p>
+
+          <button type="submit" class="btn btn--primary">Alterar senha</button>
+
+          <a href="login.html" class="link link--back">← Voltar para o login</a>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServeSync - Painel Geral</title>
+    <link rel="stylesheet" href="clientes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+
+
+
+
+            <div class="brand">
+                <img id="logoFixed" class="brand__image" src="img/Logosspng 1.png" alt="ServeSync" />
+            </div>
+
+            <nav class="menu">
+
+                <a href="#" class="menu-item active" id="tab-reservas"><i class="fa-solid fa-utensils"></i> Reservas</a>
+                <a href="#" class="menu-item" id="tab-pedidos"><i class="fa-solid fa-cart-shopping"></i> Pedidos</a>
+                <a href="#" class="menu-item" id="tab-pagamentos"><i class="fa-solid fa-credit-card"></i> Pagamento</a>
+                <a href="#" class="menu-item" id="tab-entrega"><i class="fa-solid fa-truck"></i> Entrega</a>
+            </nav>
+
+            <div class="user-profile">
+                <div class="user-info">
+                    <div class="avatar">J</div>
+                    <div class="user-details">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-email">joaosilva@gmail.com</span>
+                    </div>
+                </div>
+                <button class="btn-logout" id="btnLogout"><i class="fa-solid fa-right-from-bracket"></i> Sair</button>
+            </div>
+        </aside>
+
+        <main class="main-content content-section active" id="section-reservas">
+            <header class="content-header">
+                <div class="header-title">
+                    <h1>Minhas Reservas</h1>
+                    <p>Gerencie suas reservas de mesas</p>
+                </div>
+                <button class="btn-new-reserve" id="openModalBtn"><i class="fa-solid fa-plus"></i> Nova Reserva</button>
+            </header>
+
+            <section class="reservations-section">
+                <h2>Reservas Ativas / Pendentes</h2>
+                <div id="active-reservations-list"></div> 
+
+                <h2>Reservas Concluídas</h2>
+                <div id="completed-reservations-list"></div>
+
+                <h2>Reservas Canceladas</h2>
+                <div id="canceled-reservations-list"></div>
+            </section>
+        </main>
+
+        <main class="main-content content-section" id="section-pedidos">
+            <header class="content-header">
+                <div class="header-title">
+                    <h1>Pedidos</h1>
+                    <p>Selecione seu pedido e finalize sua compra!</p>
+                </div>
+            </header>
+
+            <div class="pedidos-container">
+                <div class="produtos-wrapper">
+                    <div class="search-container">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Buscar produto...">
+                    </div>
+
+                    <div class="categorias-row">
+                        <button class="cat-btn active" data-filter="favoritos"><i class="fa-solid fa-star"></i> Favoritos</button>
+                        <button class="cat-btn" data-filter="burgers">Burgers</button>
+                        <button class="cat-btn" data-filter="bebidas">Bebidas</button>
+                        <button class="cat-btn" data-filter="acompanhamentos">Acompanhamentos</button>
+                        <button class="cat-btn" data-filter="pizzas">Pizzas</button>
+                        <button class="cat-btn" data-filter="sobremesas">Sobremesas</button>
+                    </div>
+
+                    <div class="produtos-grid">
+                        <div class="product-card" data-category="burgers" data-name="BigSync" data-price="45.00" data-img="./img/Hamburguer 1.png">
+                            <span class="star-badge"><i class="fa-solid fa-star"></i></span>
+                            <img src="./img/Hamburguer 1.png" alt="BigSync">
+                            <h3>BigSync</h3>
+                            <p class="price">R$ 45,00</p>
+                        </div>
+                        <div class="product-card" data-category="bebidas" data-name="Refrigerante (700ml)" data-price="12.00" data-img="./img/Refri.png">
+                            <span class="star-badge"><i class="fa-solid fa-star"></i></span>
+                            <img src="./img/Refri.png" alt="Refrigerante">
+                            <h3>Refrigerante (700ml)</h3>
+                            <p class="price">R$ 12,00</p>
+                        </div>
+                        <div class="product-card" data-category="burgers" data-name="Synchicken" data-price="32.00" data-img="./img/Synchicken.png">
+                            <span class="star-badge"><i class="fa-solid fa-star"></i></span>
+                            <img src="./img/Synchicken.png" alt="Synchicken">
+                            <h3>Synchicken</h3>
+                            <p class="price">R$ 32,00</p>
+                        </div>
+                        <div class="product-card" data-category="acompanhamentos" data-name="Fritas com Cheddar" data-price="25.00" data-img="./img/Fritas.png">
+                            <span class="star-badge"><i class="fa-solid fa-star"></i></span>
+                            <img src="./img/Fritas.png" alt="Fritas">
+                            <h3>Fritas com Cheddar</h3>
+                            <p class="price">R$ 25,00</p>
+                        </div>
+                        <div class="product-card" data-category="acompanhamentos" data-name="Tiras de Frango" data-price="30.00" data-img="./img/Tiras de frango.png">
+                            <span class="star-badge"><i class="fa-solid fa-star"></i></span>
+                            <img src="./img/Tiras de frango.png" alt="Tiras de Frango">
+                            <h3>Tiras de Frango</h3>
+                            <p class="price">R$ 30,00</p>
+                        </div>
+                        <div class="product-card" data-category="sobremesas" data-name="Petit Gateau" data-price="29.00" data-img="./img/Petit gateau.png">
+                            <span class="star-badge"><i class="fa-solid fa-star"></i></span>
+                            <img src="./img/Petit gateau.png" alt="Petit Gateau">
+                            <h3>Petit Gateau</h3>
+                            <p class="price">R$ 29,00</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="carrinho-sidebar">
+                    <div class="cart-empty-state" id="cart-empty">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p>Nenhum item adicionado</p>
+                    </div>
+                    <div class="cart-items-list" id="cart-items" style="display: none;"></div>
+                    
+                    <div class="cart-footer">
+                        <div class="total-row">
+                            <span>Total:</span>
+                            <span id="cart-total">R$ 0,00</span>
+                        </div>
+                        <button class="btn-checkout" id="btnGoToPayment">Ir para o checkout</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <main class="main-content content-section" id="section-pagamentos">
+            <header class="content-header">
+                <div class="header-title">
+                    <h1>Pagamentos</h1>
+                    <p>Selecione o método de pagamento e finalize a sua compra!</p>
+                </div>
+            </header>
+
+            <div class="pagamentos-container">
+                <div class="payment-methods-wrapper">
+                    <div class="payment-card-box">
+                        <h2>Forma de Pagamento</h2>
+                        <div class="method-options">
+                            <label class="method-option-row">
+                                <input type="radio" name="payment-method" value="credito">
+                                <span class="custom-radio"><i class="fa-solid fa-credit-card"></i> Cartão de Crédito</span>
+                            </label>
+                            <label class="method-option-row">
+                                <input type="radio" name="payment-method" value="debito">
+                                <span class="custom-radio"><i class="fa-solid fa-credit-card"></i> Cartão de Débito</span>
+                            </label>
+                            <label class="method-option-row">
+                                <input type="radio" name="payment-method" value="pix" checked>
+                                <span class="custom-radio"><i class="fa-brands fa-pix"></i> PIX</span>
+                            </label>
+                            <label class="method-option-row">
+                                <input type="radio" name="payment-method" value="dinheiro">
+                                <span class="custom-radio"><i class="fa-solid fa-money-bill-wave"></i> Dinheiro</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="payment-dynamic-details" id="pay-details-pix">
+                        <h3>Pagar com PIX</h3>
+                        <div class="pix-qr-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ServeSyncPix" alt="QR Code PIX">
+                            <p>Escaneie o QR Code com o seu app de banco</p>
+                        </div>
+                        <div class="pix-code-box">
+                            <small>Ou copie o código:</small>
+                            <input type="text" readonly value="00020126360014BR.GOV.BCB.PIX0114+55119876543210204000053039865802BR5925SERVESYNC" id="pixCodeInput">
+                        </div>
+                    </div>
+
+                    <div class="payment-dynamic-details" id="pay-details-cartao" style="display:none;">
+                        <h3>Dados do Cartão</h3>
+                        <div class="card-form">
+                            <div class="form-group"><label>Número do Cartão</label><input type="text" placeholder="0000 0000 0000 0000"></div>
+                            <div class="form-group"><label>Nome no Cartão</label><input type="text" placeholder="Nome Impresso"></div>
+                            <div class="form-row">
+                                <div class="form-group"><label>Validade</label><input type="text" placeholder="MM/AA"></div>
+                                <div class="form-group"><label>CVV</label><input type="text" placeholder="000"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-dynamic-details" id="pay-details-dinheiro" style="display:none;">
+                        <h3>Pagamento na Entrega</h3>
+                        <div class="alert-box-payment">Você pagará em dinheiro quando o entregador chegar. Tenha o valor exato ou troco disponível.</div>
+                        <div class="form-group" style="margin-top: 15px;"><label>Precisa de troco para quanto?</label><input type="text" placeholder="Ex: 100.00"></div>
+                    </div>
+                </div>
+
+                <div class="payment-summary-sidebar">
+                    <div class="summary-box">
+                        <h3>Resumo do Pedido</h3>
+                        <div class="summary-items" id="payment-summary-items">
+                            <p style="color: #aaa; font-size: 13px;">Nenhum item pendente.</p>
+                        </div>
+                        <div class="summary-pricing">
+                            <div class="s-row"><span>Subtotal</span><span id="p-subtotal">R$ 0,00</span></div>
+                            <div class="s-row"><span>Taxa de entrega</span><span id="p-taxa">R$ 7,00</span></div>
+                            <hr style="border: 0; border-top: 1px dashed #ebd3da; margin: 10px 0;">
+                            <div class="s-row total-row-pay"><span>Total</span><span id="p-total">R$ 7,00</span></div>
+                        </div>
+                    </div>
+                    <button class="btn-confirm-payment" id="btnFinalizeOrder">CONFIRMAR PAGAMENTO</button>
+                    <small class="terms-label">Ao clicar em confirmar, você concorda com nossos termos de serviço.</small>
+                </div>
+            </div>
+        </main>
+
+        <main class="main-content content-section" id="section-sucesso">
+            <div class="success-screen-wrapper">
+                <div class="success-card-box">
+                    <div class="success-icon-animate">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h2>Pagamento Confirmado!</h2>
+                    <p class="success-msg">Seu pedido foi enviado com sucesso para a cozinha do restaurante.</p>
+                    
+                    <div class="loading-redirect-box">
+                        <div class="spinner-dot"></div>
+                        <span>Redirecionando para o rastreamento em tempo real...</span>
+                    </div>
+                    
+                    <div class="minimal-brand-footer">
+                        <span class="brand-text">serve<span>sync</span></span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <main class="main-content content-section" id="section-entrega">
+            <header class="content-header">
+                <div class="header-title">
+                    <h1>Rastreamento do Pedido</h1>
+                    <p>Acompanhe o seu pedido em tempo real!</p>
+                </div>
+            </header>
+
+            <div class="entrega-container">
+                <div class="entrega-status-wrapper">
+                    <div class="pedido-id-banner">
+                        <div>
+                            <span class="delivery-order-title">Pedido DEL-049</span>
+                            <p class="delivery-order-sub">Previsão de entrega: ~12 minutos</p>
+                        </div>
+                        <span class="badge-tag-delivery">A CAMINHO</span>
+                    </div>
+
+                    <div class="timeline-box">
+                        <h3>Status do Pedido</h3>
+                        <div class="timeline-vertical">
+                            <div class="timeline-step completed">
+                                <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="step-details"><h4>Confirmado</h4><p>Pedido recebido pelo restaurante</p></div>
+                            </div>
+                            <div class="timeline-step completed">
+                                <div class="step-icon"><i class="fa-solid fa-fire-burner"></i></div>
+                                <div class="step-details"><h4>Preparando</h4><p>Seu prato está sendo preparado com carinho</p></div>
+                            </div>
+                            <div class="timeline-step completed">
+                                <div class="step-icon"><i class="fa-solid fa-utensils"></i></div>
+                                <div class="step-details"><h4>Pronto</h4><p>Aguardando coleta do entregador</p></div>
+                            </div>
+                            <div class="timeline-step active">
+                                <div class="step-icon"><i class="fa-solid fa-motorcycle"></i></div>
+                                <div class="step-details"><h4>A Caminho</h4><p>O entregador está a caminho do seu endereço</p></div>
+                            </div>
+                            <div class="timeline-step disabled">
+                                <div class="step-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <div class="step-details"><h4>Entregue</h4><p>Pedido finalizado</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="entrega-details-sidebar">
+                    <div class="motoboy-card">
+                        <div class="motoboy-profile">
+                            <div class="motoboy-avatar"><i class="fa-solid fa-user"></i></div>
+                            <div class="motoboy-info">
+                                <span class="moto-label">Entregador</span>
+                                <h4 class="moto-name">João Motoboy</h4>
+                            </div>
+                        </div>
+                        <button class="btn-call-motoboy"><i class="fa-solid fa-phone"></i> Ligar</button>
+                    </div>
+
+                    <div class="delivery-address-card">
+                        <div class="address-row"><i class="fa-solid fa-location-dot color-red"></i><div><span class="addr-title">Endereço de Entrega</span><p class="addr-desc">Rua das Flores, 123 - Centro</p></div></div>
+                        <div class="address-row" style="margin-top: 15px;"><i class="fa-regular fa-clock color-maroon"></i><div><span class="addr-title">Tempo Estimado</span><p class="addr-desc">~12 minutos</p></div></div>
+                    </div>
+
+                    <div class="map-mockup-card">
+                        <div class="map-header"><span><i class="fa-solid fa-compass"></i> Mapa em Tempo Real</span><i class="fa-solid fa-expand"></i></div>
+                        <div class="map-body-graphic">
+                            <div class="map-icon-moto"><i class="fa-solid fa-motorcycle"></i></div>
+                            <div class="map-stats-row">
+                                <div><small>Distância</small><strong>2.8 km</strong></div>
+                                <div><small>Tempo</small><strong>12 min</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="delivery-items-card">
+                        <h3>Itens do Pedido</h3>
+                        <div class="delivery-items-list-box" id="delivery-final-items"></div>
+                        <div class="delivery-total-row">
+                            <span>Total</span>
+                            <strong id="delivery-final-total">R$ 0,00</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="modal-overlay" id="modalOverlay">
+            <aside class="modal-form">
+                <div class="modal-header">
+                    <h2>Nova Reserva</h2>
+                    <button class="close-modal" id="closeModalBtn">&times;</button>
+                </div>
+                <form id="reserveForm">
+                    <div class="form-row">
+                        <div class="form-group"><label>Data</label><input type="date" id="date" required></div>
+                        <div class="form-group"><label>Horário</label><input type="time" id="time" required></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Número de Pessoas</label>
+                        <select id="guests" required>
+                            <option value="1">1 pessoa</option>
+                            <option value="2" selected>2 pessoas</option>
+                            <option value="3">3 pessoas</option>
+                            <option value="4">4 pessoas</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Nome Completo</label><input type="text" id="name" placeholder="Seu nome completo" required></div>
+                    <div class="form-group"><label>Telefone</label><input type="tel" id="phone" placeholder="(11) 98765-4321" required></div>
+                    <button type="submit" class="btn-submit">SOLICITAR RESERVA</button>
+                </form>
+            </aside>
+        </div>
+
+        <div class="modal-overlay" id="dialogOverlay">
+            <aside class="modal-form dialog-box">
+                <div class="modal-header">
+                    <h2 style="font-size: 16px;">Personalizar Pedido</h2>
+                    <button class="close-modal" id="closeDialogBtn">&times;</button>
+                </div>
+                <div class="dialog-content">
+                    <img id="dialog-img" src="" alt="" class="dialog-product-img">
+                    <h3 id="dialog-title" class="dialog-p-title"></h3>
+                    <p id="dialog-price" class="dialog-p-price"></p>
+
+                    <div class="custom-sections">
+                        <div class="custom-column">
+                            <h4>Ingredientes (Remover)</h4>
+                            <label class="custom-check"><input type="checkbox"> Pão</label>
+                            <label class="custom-check"><input type="checkbox"> Carne</label>
+                            <label class="custom-check"><input type="checkbox"> Queijo</label>
+                        </div>
+                        <div class="custom-column">
+                            <h4>Extras (+R$ 2,00 cada)</h4>
+                            <div class="extra-row"><span>Bacon</span><div class="qty-control"><button>-</button><span>1</span><button>+</button></div></div>
+                            <div class="extra-row"><span>Alface</span><div class="qty-control"><button>-</button><span>1</span><button>+</button></div></div>
+                        </div>
+                    </div>
+                    <button class="btn-submit" id="btnAddToCart"><i class="fa-solid fa-cart-plus"></i> Adicionar ao Pedido</button>
+                </div>
+            </aside>
+        </div>
+
+    </div>
+
+    <script src="common-client.js"></script>
+    <script src="clientes.js"></script>
+</body>
+</html>

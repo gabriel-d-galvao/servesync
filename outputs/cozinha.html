@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ServeSync | Cozinha</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="cozinha">
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Menu principal">
+        <div class="brand">
+          <label class="logo-field" for="logoInput">
+            <img id="logoPreview" alt="Logo do restaurante" hidden />
+            <span id="logoPlaceholder">Adicionar logo</span>
+            <input id="logoInput" class="sr-only" type="file" accept="image/*" />
+          </label>
+        </div>
+
+        <nav class="main-nav" aria-label="Áreas do sistema">
+          <a class="nav-link" href="./index.html" data-nav-page="recepcao">Recepção</a>
+          <a class="nav-link" href="./pedidos.html" data-nav-page="pedidos">Pedidos</a>
+          <a class="nav-link active" href="./cozinha.html" aria-current="page" data-nav-page="cozinha">Cozinha</a>
+          <a class="nav-link" href="#">Delivery</a>
+          <a class="nav-link" href="#">Estoque</a>
+          <a class="nav-link" href="#">Gerência</a>
+        </nav>
+
+        <div class="user-box" aria-label="Usuário logado">
+          <div class="avatar" aria-hidden="true">A</div>
+          <div>
+            <strong>Administrador</strong>
+          </div>
+        </div>
+
+        <button class="logout-button" type="button">Sair</button>
+      </aside>
+
+      <main class="content">
+        <header class="page-header page-header-actions">
+          <div>
+            <h1>Cozinha</h1>
+            <p>Atualizações e informações dos pedidos.</p>
+          </div>
+
+          <button id="pauseKitchenButton" class="button button-light" type="button">Pausar</button>
+        </header>
+
+        <section class="kitchen-stats" aria-label="Resumo da cozinha">
+          <article>
+            <strong id="kitchenTotal">0</strong>
+            <span>Total</span>
+          </article>
+          <article>
+            <strong id="kitchenNew">0</strong>
+            <span>Novos</span>
+          </article>
+          <article>
+            <strong id="kitchenPreparing">0</strong>
+            <span>Em preparo</span>
+          </article>
+          <article>
+            <strong id="kitchenReady">0</strong>
+            <span>Prontos</span>
+          </article>
+        </section>
+
+        <section class="kitchen-board" aria-label="Pedidos da cozinha">
+          <div class="kitchen-column" data-column="new">
+            <header>
+              <h2>Novos</h2>
+              <span id="newCount">0</span>
+            </header>
+            <div id="newOrders" class="order-list"></div>
+          </div>
+
+          <div class="kitchen-column preparing" data-column="preparing">
+            <header>
+              <h2>Em preparo</h2>
+              <span id="preparingCount">0</span>
+            </header>
+            <div id="preparingOrders" class="order-list"></div>
+          </div>
+
+          <div class="kitchen-column ready" data-column="ready">
+            <header>
+              <h2>Prontos</h2>
+              <span id="readyCount">0</span>
+            </header>
+            <div id="readyOrders" class="order-list"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./common.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./cozinha.js"></script>
+    <script src="./logout-employee.js"></script>
+  </body>
+</html>

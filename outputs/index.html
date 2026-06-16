@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ServeSync | Recepção</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="recepcao">
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Menu principal">
+        <div class="brand">
+          <label class="logo-field" for="logoInput">
+            <img id="logoPreview" alt="Logo do restaurante" hidden />
+            <span id="logoPlaceholder">Adicionar logo</span>
+            <input id="logoInput" class="sr-only" type="file" accept="image/*" />
+          </label>
+        </div>
+
+        <nav class="main-nav" aria-label="Áreas do sistema">
+          <a class="nav-link active" href="./index.html" aria-current="page" data-nav-page="recepcao">Recepção</a>
+          <a class="nav-link" href="./pedidos.html" data-nav-page="pedidos">Pedidos</a>
+          <a class="nav-link" href="./cozinha.html" data-nav-page="cozinha">Cozinha</a>
+          <a class="nav-link" href="#">Delivery</a>
+          <a class="nav-link" href="#">Estoque</a>
+          <a class="nav-link" href="#">Gerência</a>
+        </nav>
+
+        <div class="user-box" aria-label="Usuário logado">
+          <div class="avatar" aria-hidden="true">A</div>
+          <div>
+            <strong>Administrador</strong>
+          </div>
+        </div>
+
+        <button class="logout-button" type="button">Sair</button>
+      </aside>
+
+      <main class="content">
+        <header class="page-header">
+          <div>
+            <h1>Recepção</h1>
+            <p>Controle de entrada, reserva e organização do layout de mesas.</p>
+          </div>
+        </header>
+
+        <div id="dashboard" class="dashboard">
+          <section class="map-card" aria-labelledby="mapTitle">
+            <header class="card-header">
+              <h2 id="mapTitle">Mapa do Ambiente</h2>
+              <div class="normal-actions">
+                <button id="editLayoutButton" class="button button-light" type="button">
+                  Editar Layout
+                </button>
+              </div>
+              <div class="edit-actions" hidden>
+                <button id="addTableButton" class="button button-primary" type="button">
+                  Adicionar mesa
+                </button>
+                <button id="cancelEditButton" class="button button-light" type="button">
+                  Cancelar alterações
+                </button>
+                <button id="confirmEditButton" class="button button-primary" type="button">
+                  Confirmar layout
+                </button>
+              </div>
+            </header>
+
+            <div class="floor-wrap">
+              <div id="floorPlan" class="floor-plan" aria-label="Mapa de mesas"></div>
+            </div>
+
+            <ul class="legend" aria-label="Legenda de status das mesas">
+              <li><span class="legend-dot available"></span>Disponível</li>
+              <li><span class="legend-dot occupied"></span>Ocupada</li>
+              <li><span class="legend-dot reserved"></span>Reservada</li>
+            </ul>
+          </section>
+
+          <aside class="right-column" aria-label="Resumo da recepção">
+            <section class="stats-panel" aria-label="Indicadores de mesas">
+              <article>
+                <strong id="availableCount">0</strong>
+                <span>Disponíveis</span>
+              </article>
+              <article>
+                <strong id="occupiedCount">0</strong>
+                <span>Ocupadas</span>
+              </article>
+              <article>
+                <strong id="reservedCount">0</strong>
+                <span>Reservadas</span>
+              </article>
+              <article>
+                <strong id="waitingCount">0</strong>
+                <span>Na fila</span>
+              </article>
+            </section>
+
+            <section class="waitlist-panel" aria-labelledby="waitlistTitle">
+              <header class="card-header">
+                <h2 id="waitlistTitle">Lista de Espera</h2>
+                <button id="openCheckinButton" class="button button-primary" type="button">
+                  + Check-in
+                </button>
+              </header>
+              <div id="waitlist" class="waitlist" aria-live="polite"></div>
+            </section>
+
+          </aside>
+
+          <aside id="editorPanel" class="editor-panel" hidden aria-labelledby="editorTitle">
+            <div class="editor-header">
+              <h2 id="editorTitle">Editar mesa</h2>
+              <button id="closeEditorButton" class="icon-button" type="button" aria-label="Fechar editor">
+                x
+              </button>
+            </div>
+
+            <p id="editorHint" class="editor-hint">Selecione uma mesa no mapa para editar.</p>
+
+            <form id="tableForm" class="table-form" hidden>
+              <label>
+                Número da mesa
+                <input id="tableNumberInput" type="number" min="1" inputmode="numeric" />
+              </label>
+
+              <label>
+                Formato da mesa
+                <select id="tableShapeInput">
+                  <option value="rect">Retangular</option>
+                  <option value="round">Circular</option>
+                </select>
+              </label>
+
+              <label>
+                Status
+                <select id="tableStatusInput">
+                  <option value="available">Disponível</option>
+                  <option value="occupied">Ocupada</option>
+                  <option value="reserved">Reservada</option>
+                </select>
+              </label>
+
+              <button id="deleteTableButton" class="button button-danger" type="button">
+                Apagar mesa
+              </button>
+              <button class="button button-primary" type="submit">Salvar</button>
+            </form>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <dialog id="checkinDialog" class="modal">
+      <form id="checkinForm" method="dialog">
+        <header class="modal-header">
+          <h2>Novo check-in</h2>
+          <button class="icon-button" value="cancel" type="button" data-close-dialog aria-label="Fechar">
+            x
+          </button>
+        </header>
+
+        <label>
+          Nome
+          <input id="guestNameInput" name="guestName" autocomplete="name" placeholder="Nome do cliente" />
+        </label>
+
+        <label>
+          Telefone
+          <input id="guestPhoneInput" name="guestPhone" autocomplete="tel" inputmode="tel" placeholder="(00) 0000-0000" />
+        </label>
+
+        <label>
+          Pessoas
+          <input id="guestPartyInput" name="guestParty" type="number" min="0" value="0" />
+        </label>
+
+        <label>
+          Data da reserva
+          <input id="guestDateInput" name="guestDate" type="text" inputmode="numeric" placeholder="00/00/0000" />
+        </label>
+
+        <label>
+          Horário da reserva
+          <select id="guestTimeInput" name="guestTime">
+            <option value="">Selecione o horário disponível</option>
+            <option value="19:00">19:00</option>
+            <option value="20:00">20:00</option>
+            <option value="21:00">21:00</option>
+          </select>
+        </label>
+
+        <menu class="modal-actions">
+          <button class="button button-primary" value="default" type="submit">
+            Adicionar
+          </button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="tableStatusDialog" class="modal">
+      <form id="tableStatusForm" method="dialog">
+        <header class="modal-header">
+          <h2 id="statusDialogTitle">Mesa</h2>
+          <button class="icon-button" value="cancel" type="button" data-close-dialog aria-label="Fechar">
+            x
+          </button>
+        </header>
+
+        <label>
+          Status da Mesa
+          <select id="statusDialogSelect" name="tableStatus">
+            <option value="available">Disponível</option>
+            <option value="occupied">Ocupada</option>
+            <option value="reserved">Reservada</option>
+          </select>
+        </label>
+
+        <label>
+          Quantidade de Pessoas
+          <input id="statusPeopleInput" name="tablePeople" type="number" min="0" value="0" />
+        </label>
+
+        <p class="warning-box">
+          Alterar o status para ocupada iniciará automaticamente o tempo de permanência no dashboard.
+        </p>
+
+        <menu class="modal-actions">
+          <button class="button button-primary" value="default" type="submit">Salvar</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script src="./common.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./script.js"></script>
+    <script src="./logout-employee.js"></script>
+  </body>
+</html>

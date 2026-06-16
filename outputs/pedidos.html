@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ServeSync | Pedidos</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="pedidos">
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Menu principal">
+        <div class="brand">
+          <label class="logo-field" for="logoInput">
+            <img id="logoPreview" alt="Logo do restaurante" hidden />
+            <span id="logoPlaceholder">Adicionar logo</span>
+            <input id="logoInput" class="sr-only" type="file" accept="image/*" />
+          </label>
+        </div>
+
+        <nav class="main-nav" aria-label="Áreas do sistema">
+          <a class="nav-link" href="./index.html" data-nav-page="recepcao">Recepção</a>
+          <a class="nav-link active" href="./pedidos.html" aria-current="page" data-nav-page="pedidos">Pedidos</a>
+          <a class="nav-link" href="./cozinha.html" data-nav-page="cozinha">Cozinha</a>
+          <a class="nav-link" href="#">Delivery</a>
+          <a class="nav-link" href="#">Estoque</a>
+          <a class="nav-link" href="#">Gerência</a>
+        </nav>
+
+        <div class="user-box" aria-label="Usuário logado">
+          <div class="avatar" aria-hidden="true">A</div>
+          <div>
+            <strong>Administrador</strong>
+          </div>
+        </div>
+
+        <button class="logout-button" type="button">Sair</button>
+      </aside>
+
+      <main class="content">
+        <header class="page-header page-header-actions">
+          <div>
+            <h1>Pedidos</h1>
+            <p>Sistema de pedidos e vendas.</p>
+          </div>
+
+          <div class="toolbar-actions">
+            <button id="openProductButton" class="button button-primary" type="button">Criar item</button>
+            <label class="inline-field">
+              Mesa
+              <select id="tableSelect">
+                <option value="M1">M1</option>
+                <option value="M2">M2</option>
+                <option value="M4">M4</option>
+                <option value="M7">M7</option>
+              </select>
+            </label>
+          </div>
+        </header>
+
+        <div class="orders-layout">
+          <section class="menu-panel" aria-labelledby="menuTitle">
+            <h2 id="menuTitle" class="sr-only">Cardápio</h2>
+            <label class="search-field">
+              <span class="sr-only">Buscar produto</span>
+              <input id="productSearch" type="search" placeholder="Buscar produto" />
+            </label>
+
+            <div class="category-tabs" role="tablist" aria-label="Categorias do cardápio">
+              <button class="category-tab active" type="button" data-category="all">Favoritos</button>
+              <button class="category-tab" type="button" data-category="burgers">Burgers</button>
+              <button class="category-tab" type="button" data-category="bebidas">Bebidas</button>
+              <button class="category-tab" type="button" data-category="acompanhamentos">Acompanhamentos</button>
+              <button class="category-tab" type="button" data-category="pizzas">Pizzas</button>
+              <button class="category-tab" type="button" data-category="sobremesas">Sobremesas</button>
+            </div>
+
+            <div id="productGrid" class="product-grid" aria-live="polite"></div>
+          </section>
+
+          <aside class="cart-panel" aria-labelledby="cartTitle">
+            <h2 id="cartTitle">Mesa <span id="currentTableLabel">M1</span></h2>
+            <div id="cartItems" class="cart-items" aria-live="polite"></div>
+
+            <footer class="cart-footer">
+              <div class="cart-total">
+                <span>Total</span>
+                <strong id="cartTotal">R$ 0,00</strong>
+              </div>
+              <button id="sendOrderButton" class="button button-primary" type="button">Enviar pedido</button>
+            </footer>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <dialog id="productDialog" class="modal product-modal">
+      <form id="productForm" method="dialog">
+        <header class="modal-header">
+          <h2>Adicionar novo produto</h2>
+          <button class="icon-button" value="cancel" type="button" data-close-dialog aria-label="Fechar">
+            x
+          </button>
+        </header>
+
+        <label>
+          Nome do Produto
+          <input id="productNameInput" name="productName" placeholder="Ex: Hambúrguer Especial" />
+        </label>
+
+        <label>
+          Preço (R$)
+          <input id="productPriceInput" name="productPrice" type="number" min="0" step="0.01" placeholder="0" />
+        </label>
+
+        <label>
+          Categoria
+          <select id="productCategoryInput" name="productCategory">
+            <option value="burgers">Burgers</option>
+            <option value="bebidas">Bebidas</option>
+            <option value="acompanhamentos">Acompanhamentos</option>
+            <option value="pizzas">Pizzas</option>
+            <option value="sobremesas">Sobremesas</option>
+          </select>
+        </label>
+
+        <label>
+          Imagem do Produto
+          <span class="file-control">
+            <span id="productImagePreview" class="file-preview" aria-hidden="true"></span>
+            <input id="productImageInput" name="productImage" type="file" accept="image/*" />
+          </span>
+        </label>
+
+        <div id="ingredientPreview" class="ingredient-preview" hidden></div>
+
+        <button id="openIngredientButton" class="button button-light" type="button">Adicionar ingredientes</button>
+        <button id="deleteDraftButton" class="button button-danger" type="button">Apagar produto</button>
+        <button class="button button-primary" type="submit">Adicionar ao cardápio</button>
+      </form>
+    </dialog>
+
+    <dialog id="ingredientDialog" class="modal ingredient-modal">
+      <form id="ingredientForm" method="dialog">
+        <header class="modal-header">
+          <h2>Adicionar novo ingrediente</h2>
+          <button class="icon-button" value="cancel" type="button" data-close-dialog aria-label="Fechar">
+            x
+          </button>
+        </header>
+
+        <div id="selectedIngredients" class="selected-ingredients" aria-live="polite"></div>
+
+        <label>
+          Ingrediente
+          <select id="ingredientSelect" name="ingredient">
+            <option value="">Selecione o item</option>
+            <option value="Pão">Pão</option>
+            <option value="Carne">Carne</option>
+            <option value="Alface">Alface</option>
+            <option value="Tomate">Tomate</option>
+            <option value="Cebola">Cebola</option>
+          </select>
+        </label>
+
+        <button class="button button-primary" type="submit">Adicionar ao produto</button>
+      </form>
+    </dialog>
+
+    <script src="./common.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./pedidos.js"></script>
+    <script src="./logout-employee.js"></script>
+  </body>
+</html>

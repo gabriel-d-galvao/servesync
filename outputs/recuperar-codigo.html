@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ServeSync — Código de verificação</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="topbar__title">Login</span>
+  </header>
+
+  <main class="app app--solo">
+    <section class="panel">
+      <div class="panel__form">
+        <header class="panel__header">
+          <h1>Altere sua senha</h1>
+          <p>Insira seu código de segurança</p>
+        </header>
+
+        <form class="form" id="form-code" action="nova-senha.html" method="get" novalidate>
+          <div class="otp" role="group" aria-label="Código de verificação">
+            <input type="text" inputmode="numeric" maxlength="1" class="otp__input" aria-label="Dígito 1" required>
+            <input type="text" inputmode="numeric" maxlength="1" class="otp__input" aria-label="Dígito 2" required>
+            <input type="text" inputmode="numeric" maxlength="1" class="otp__input" aria-label="Dígito 3" required>
+            <input type="text" inputmode="numeric" maxlength="1" class="otp__input" aria-label="Dígito 4" required>
+          </div>
+
+          <a href="#" class="link link--small" id="resend-code">Reenviar código?</a>
+
+          <button type="submit" class="btn btn--primary">Confirmar código</button>
+
+          <a href="login.html" class="link link--back">← Voltar para o login</a>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

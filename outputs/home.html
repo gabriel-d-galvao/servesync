@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ServeSync | Home</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="home">
+    <div class="app-shell" style="grid-template-columns: 1fr;">
+      <main class="content" style="max-width: 520px; margin: 0 auto;">
+        <header class="page-header" style="margin-bottom: 10px;">
+          <div>
+            <h1 style="margin: 0;">Acessando...</h1>
+            <p>Redirecionando para a recepção.</p>
+          </div>
+        </header>
+        <div class="map-card" style="padding: 18px;">
+          <p style="margin: 0; color: var(--muted); font-weight: 700;">
+            Se não redirecionar automaticamente, clique no botão abaixo.
+          </p>
+          <div style="margin-top: 14px;">
+            <button
+              class="button button-primary"
+              type="button"
+              id="goRecepcao"
+              style="width: 100%;"
+            >
+              Ir para Recepção
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const go = () => {
+          // Direciona para a página principal do funcionário
+          window.location.href = "./index.html";
+        };
+
+        document.querySelector("#goRecepcao").addEventListener("click", go);
+        setTimeout(go, 300);
+      })();
+    </script>
+  </body>
+</html>
+
+
