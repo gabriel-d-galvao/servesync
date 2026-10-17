@@ -1,6 +1,6 @@
 # ServeSync
 
-🔗 **[Ver demonstração online](https://galvao759.github.io/servesync/)**
+🔗 **[Ver demonstração online](https://gabriel-d-galvao.github.io/servesync/)**
 
 **Como testar:** na tela de login, digite qualquer e-mail e senha e clique em "Entrar" para ver a área do cliente. Clique em "Entrar como funcionário" para ver a recepção, a cozinha e os pedidos. O login é simulado, então não precisa de cadastro.
 
