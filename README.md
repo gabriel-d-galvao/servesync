@@ -1,5 +1,9 @@
 # ServeSync
 
+🔗 **[Ver demonstração online](https://galvao759.github.io/servesync/)**
+
+**Como testar:** na tela de login, digite qualquer e-mail e senha e clique em "Entrar" para ver a área do cliente. Clique em "Entrar como funcionário" para ver a recepção, a cozinha e os pedidos. O login é simulado, então não precisa de cadastro.
+
 Protótipo de um sistema de pedidos para restaurante, feito com **HTML, CSS e JavaScript puro**.
 
 > 🌱 **Este é o meu primeiro projeto de programação.** Ele nasceu como exercício para aprender a transformar um design em código funcionando. Está aqui exatamente como o construí, sem esconder as limitações, porque o objetivo é mostrar de onde eu parti e para onde estou indo.
